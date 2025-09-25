@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/niama-sakhr_portfolio/static/css/main.48b11a23.css",
+    "main.js": "/niama-sakhr_portfolio/static/js/main.0354bffb.js",
+    "index.html": "/niama-sakhr_portfolio/index.html",
+    "main.48b11a23.css.map": "/niama-sakhr_portfolio/static/css/main.48b11a23.css.map",
+    "main.0354bffb.js.map": "/niama-sakhr_portfolio/static/js/main.0354bffb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.48b11a23.css",
+    "static/js/main.0354bffb.js"
+  ]
+}
