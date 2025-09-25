@@ -1,0 +1,23 @@
+import { Link } from "react-router-dom";
+
+export default function Hero() {
+  return (
+    <section className="hero">
+      <div>
+        <p className="eyebrow">Hi There! 👋</p>
+        <h1>I’m <span className="accent">Niama Sakhr</span></h1>
+        <h2>Full-Stack Developer • Data & AI Enthusiast</h2>
+        <p className="muted">
+          Étudiant(e) 3ᵉ année 2ITE – ENSA El Jadida. Stage chez Groupe GMD.
+          Créateur de <b>StageWise</b> (React + Spring Boot + MySQL + NLP + Rasa),
+          apps React Native (WebApp Navigator) et pipeline BI (ClickHouse/Kafka/Metabase).
+        </p>
+        <div className="cta">
+          <Link className="btn" to="/projects">View Projects</Link>
+          <Link className="btn ghost" to="/resume">Download CV</Link>
+        </div>
+      </div>
+      <div className="hero-illus" aria-hidden />
+    </section>
+  );
+}
