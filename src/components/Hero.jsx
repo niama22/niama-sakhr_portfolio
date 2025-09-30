@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
-
 export default function Hero() {
   return (
     <section id="home" className="hero">
       <div>
         <p className="eyebrow">Hi there!</p>
-        <h1>I'm <span className="accent">Niama Sakhr</span></h1>
+        <h1>
+          I'm <span className="name-animate" style={{ "--chars": 14, "--type-speed": "2s", "--start-delay": ".20s" }}><span className="accent">SAKHR Niamaa </span></span>
+        </h1>
         <h2>Software & Data Engineer</h2>
         <p className="muted">
           Passionate engineering student with strong skills in <b>Full-Stack Development</b>,
@@ -13,12 +13,19 @@ export default function Hero() {
           CI/CD automation and Big Data pipelines.
         </p>
         <div className="cta">
-          <Link className="btn" to="/projects">View Projects</Link>
-          <Link className="btn ghost" to="/resume">Download CV</Link>
+          <a className="btn" href="#projects">
+            View Projects
+          </a>
+          <a className="btn ghost" href="#resume">
+            Download CV
+          </a>
         </div>
       </div>
       <div className="hero-illus" aria-hidden />
     </section>
   );
 }
+
+
+
 

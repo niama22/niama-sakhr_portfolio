@@ -10,7 +10,7 @@ export default function Contact() {
           <span className="icon" aria-hidden><FaEnvelope /></span>
           <div>
             <div className="title">Email</div>
-            <div className="muted">niamasakhr@gmail.com</div>
+            <div className="muted">niama.sakhr22@gmail.com</div>
           </div>
         </a>
         <div className="card contact-item">

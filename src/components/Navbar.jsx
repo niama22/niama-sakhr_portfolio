@@ -1,68 +1,94 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState, useCallback } from "react";
 import { FaGithub, FaLinkedin, FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
+
+const NAV_LINKS = [
+  { href: "#home", label: "Home" },
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
+  { href: "#certifications", label: "Certifications" },
+  { href: "#projects", label: "Projects" },
+  { href: "#resume", label: "Resume" },
+  { href: "#contact", label: "Contact" },
+];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const close = () => setOpen(false);
+  const close = useCallback(() => setOpen(false), []);
   const [theme, setTheme] = useState(() => {
-    if (typeof window === 'undefined') return 'dark';
-    return localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    if (typeof window === "undefined") return "dark";
+    return (
+      window.localStorage.getItem("theme") ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+    );
   });
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    document.documentElement.setAttribute("data-theme", theme);
+    window.localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const linkClass = "nav-link";
+  const handleNavigate = useCallback(
+    (href) => (event) => {
+      if (typeof window === "undefined") return;
+      event.preventDefault();
+      close();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, "", href);
+      }
+    },
+    [close]
+  );
+
+  const renderLinks = (linkClass) =>
+    NAV_LINKS.map(({ href, label }) => (
+      <a key={href} href={href} className={linkClass} onClick={handleNavigate(href)}>
+        {label}
+      </a>
+    ));
 
   return (
     <header className="nav">
       <div className="nav-container">
-        {/* Brand */}
-        <Link to="/" className="brand" onClick={close}>
+        <a href="#home" className="brand" onClick={handleNavigate("#home")}>
           Niama<span className="dot">.</span>
-        </Link>
+        </a>
 
-        {/* Desktop links */}
         <nav className="links desktop" aria-label="Primary">
-          <Link to="/" className={linkClass} onClick={close}>Home</Link>
-          <Link to="/about" className={linkClass} onClick={close}>About</Link>
-          <Link to="/skills" className={linkClass} onClick={close}>Skills</Link>
-          <Link to="/certifications" className={linkClass} onClick={close}>Certifications</Link>
-          <Link to="/projects" className={linkClass} onClick={close}>Projects</Link>
-          <Link to="/resume" className={linkClass} onClick={close}>Resume</Link>
-          <Link to="/contact" className={linkClass} onClick={close}>Contact</Link>
+          {renderLinks("nav-link")}
         </nav>
 
-        {/* Actions */}
         <div className="actions">
           <button
             className="theme-toggle"
             aria-label="Toggle theme"
-            onClick={() => setTheme(t => (t === 'dark' ? 'light' : 'dark'))}
-            title={theme === 'dark' ? 'Switch to light' : 'Switch to dark'}
+            onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
+            title={theme === "dark" ? "Switch to light" : "Switch to dark"}
           >
-            {theme === 'dark' ? <FaSun/> : <FaMoon/>}
+            {theme === "dark" ? <FaSun /> : <FaMoon />}
           </button>
-          <a href="https://github.com/niama22" target="_blank" rel="noreferrer" aria-label="GitHub"><FaGithub/></a>
-          <a href="https://www.linkedin.com/in/niama-sakhr-4672572a2/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin/></a>
-          <button className="burger" onClick={() => setOpen(v => !v)} aria-label="Toggle menu">
-            {open ? <FaTimes/> : <FaBars/>}
+          <a href="https://github.com/niama22" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <FaGithub />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/niama-sakhr-4672572a2/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin />
+          </a>
+          <button className="burger" onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
+            {open ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
 
-      {/* Mobile drawer */}
       <nav className={`links mobile ${open ? "open" : ""}`} aria-label="Mobile">
-        <Link to="/" onClick={close} className={linkClass}>Home</Link>
-        <Link to="/about" onClick={close} className={linkClass}>About</Link>
-        <Link to="/skills" onClick={close} className={linkClass}>Skills</Link>
-        <Link to="/certifications" onClick={close} className={linkClass}>Certifications</Link>
-        <Link to="/projects" onClick={close} className={linkClass}>Projects</Link>
-        <Link to="/resume" onClick={close} className={linkClass}>Resume</Link>
-        <Link to="/contact" onClick={close} className={linkClass}>Contact</Link>
+        {renderLinks("nav-link")}
       </nav>
     </header>
   );
