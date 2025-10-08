@@ -1,4 +1,4 @@
-:root{ /* default: dark */
+ï»¿:root{ /* default: dark */
   --bg:#0a0a12; --bg-2:#0f0f1a; --card:#16162c; --card-2:#1b1b33;
   --text:#f0f0ff; --muted:#b4b4d1; --border:#2c2c4a; --border-2:#3a3a5a;
   --accent:#9C27F5; --accent-2:#7B1ED1; --accent-light:rgba(156,39,245,.15);
@@ -452,29 +452,29 @@ a{color:inherit;text-decoration:none}
   flex:0 0 34px;  /* prevents squeeze on wrap */
 }
 
-.cert-card h3{ margin:0 } /* évite double marge avec .cert-title */
-.cert-card{ padding:18px } /* un peu plus d’air pour l’icône */
-.cert-card p.muted{ margin-top:10px } /* légère cohérence */
+.cert-card h3{ margin:0 } /* ï¿½vite double marge avec .cert-title */
+.cert-card{ padding:18px } /* un peu plus dï¿½air pour lï¿½icï¿½ne */
+.cert-card p.muted{ margin-top:10px } /* lï¿½gï¿½re cohï¿½rence */
 
-/* Ligne de pied mieux séparée */
+/* Ligne de pied mieux sï¿½parï¿½e */
 .cert-card-footer{
   margin-top:auto; padding-top:14px;
   border-top:1px solid var(--border);
 }
 
-/* Meta provider/année (si tu ajoutes plus tard) */
+/* Meta provider/annï¿½e (si tu ajoutes plus tard) */
 .cert-meta{
   display:flex; align-items:center; gap:8px;
   font-size:.95rem; opacity:.85; margin-top:4px;
 }
 .cert-meta .dot{ opacity:.55 }
 
-/* Light mode: icône lisible sur fond clair */
+/* Light mode: icï¿½ne lisible sur fond clair */
 [data-theme="light"] .cert-icon{
   box-shadow:0 8px 18px rgba(124,58,237,.22);
 }
 
-/* Petits écrans: titre plus compact */
+/* Petits ï¿½crans: titre plus compact */
 @media (max-width: 480px){
   .cert-title{ font-size:1.1rem; gap:8px }
   .cert-icon{ width:30px; height:30px; font-size:1.1rem; border-radius:8px }

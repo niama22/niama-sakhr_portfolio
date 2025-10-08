@@ -22,6 +22,16 @@
       demo: "/excellia-demo.mp4"
     }
   },
+   {
+    title: "Intelligent Movie Recommendation System",
+    desc: "Deep Learning–based recommendation engine that suggests semantically similar movies using TF-IDF, Autoencoder, and Cosine Similarity. Includes a React.js interface for interactive exploration.",
+    stack: "Python (Flask), Keras, scikit-learn, Pandas, NumPy, React.js, TMDB API",
+    image: "/page3.png",
+    categories: ["ML", "Web", "AI"],
+    links: {
+      github: "https://github.com/niama22",
+      demo: "/recom.mp4"
+    }},
   {
     title: "StageLink - Internship Management Platform",
     desc: "End-to-end platform for managing internship offers, applications, selection and monitoring. Added NLP-based CV/offer compatibility and a chatbot.",
